@@ -169,7 +169,7 @@ body {
   width: clamp(165px, 15%, 200px);
 }
 
-.num-decimal {
+.decimal {
   grid-column: 3/4;
   grid-row: 5/6;
 }
