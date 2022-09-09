@@ -5,6 +5,7 @@ const state = {
   valueOne: 0,
   valueTwo: 0,
   operation: null,
+  lastKeyAnOperator: false // Tracks if the last key pressed was an operator
 }
 
 // Power button
@@ -44,6 +45,8 @@ function changeValue(e) {
     // 3) If the number clicked is not zero, call handleChange.
     handleChange(value)
   }
+
+  state.lastKeyAnOperator = false;
 }
 
 function handleChange(val) {
@@ -89,6 +92,7 @@ function handleDecimal() {
   }
   console.log("val1: ", state.valueOne, "opeartion: ", state.operation, "val2: ", state.valueTwo);
 
+  state.lastKeyAnOperator = false;
 }
 
 // Operators
@@ -101,11 +105,13 @@ operatorButtons.forEach(button => {
 function handleOperation(e) {
   incomingOperation = e.target.textContent;
 
-  // 1) Check if there is a previous operation stored in memory:
-  if (state.operation) {
+  // 1) Check if there is a previous operation stored in memory && last key 
+  //    pressed was not an operator:
+  if (state.operation && !state.lastKeyAnOperator) {
     evaluateOperation();
   }
   setOperator(incomingOperation);
+  state.lastKeyAnOperator = true;
   console.log("val1: ", state.valueOne, "opeartion: ", state.operation, "val2: ", state.valueTwo);
 }
 
@@ -151,3 +157,4 @@ function evaluateOperation() {
   }
   state.valueTwo = 0;
 }
+
