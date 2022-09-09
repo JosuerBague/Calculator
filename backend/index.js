@@ -86,3 +86,44 @@ function handleDecimal() {
   }
   console.log("val1: ", state.valueOne, "val2: ", state.valueTwo);
 }
+
+// Operators
+// Plus
+const addButton = document.querySelector(".op-plus");
+addButton.addEventListener("click", handleAddition);
+function handleAddition() {
+  // 1) Check if there is no previous operator in memory:
+  if (state.operation === null) {
+    // 2) Set state-operation to "add"
+    state.operation = 'add'
+    console.log("pre: ", state.operation)
+  }
+  else {
+    // 3) Else call evaluate, then set state.operation to "add"
+    evaluate();
+    state.operation = 'add'
+  }
+}
+
+function evaluate() {
+  switch (state.operation) {
+    case "add": {
+      state.valueOne = `${+state.valueOne + +state.valueTwo}`;
+      break;
+    }
+    case "subtract": {
+      state.valueOne = `${+state.valueOne - +state.valueTwo}`;
+      break;
+    }
+    case "multiply": {
+      state.valueOne = `${+state.valueOne * +state.valueTwo}`;
+      break;
+    }
+    case "divide": {
+      state.valueOne = `${+state.valueOne / +state.valueTwo}`;
+      break;
+    }
+  }
+  state.valueTwo = 0;
+  console.log("val1: ", state.valueOne, "val2: ", state.valueTwo, "operation: ", state.operation);
+}
