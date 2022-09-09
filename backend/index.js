@@ -39,16 +39,16 @@ function changeValue(e) {
   // 1) First, check if the number clicked is zero.
   if (+value === 0) {
     // 2) If the number clicked is zero, call handleZero.
-    handleZero(state.operation)
+    handleZero()
   } else {
     // 3) If the number clicked is not zero, call handleChange.
-    handleChange(state.operation, value)
+    handleChange(value)
   }
 }
 
-function handleChange(operatorNotNull, val) {
+function handleChange(val) {
   // 1) Check if state.operator is not null.
-  if (operatorNotNull) {
+  if (state.operation) {
     // 2) If the last key pressed was an operator, then change valueTwo.
     state.valueTwo = state.valueTwo ? state.valueTwo + val : val;
   } else {
@@ -56,19 +56,22 @@ function handleChange(operatorNotNull, val) {
     state.valueOne = state.valueOne ? state.valueOne + val : val;
   }
 
-  console.log("val1: ", state.valueOne, "val2: ", state.valueTwo);
+  console.log("val1: ", state.valueOne, "opeartion: ", state.operation, "val2: ", state.valueTwo);
 }
 
-function handleZero(operatorNotNull) {
-  // 1) Check if operator is not null
-  if (operatorNotNull) {
-    // 2) Change valueTwo
-    state.valueTwo = `${state.valueTwo}`.includes('.') ? state.valueTwo + 0 : 0;
+function handleZero() {
+  // 1) If state.operation is null, change Val2:
+  if (state.operation) {
+    state.valueTwo = state.valueTwo === 0 ? 0 : `${state.valueTwo + 0}`;
+    // : `${state.valueTwo}`.includes('.') ? state.valueTwo + 0 : 0;
   }
+  // 2) Else change Val1:
   else {
-    state.valueOne = `${state.valueOne}`.includes('.') ? state.valueOne + 0 : 0;
+    state.valueOne = state.valueOne === 0 ? 0 : `${state.valueOne + 0}`;
+    // state.valueOne = `${state.valueOne}`.includes('.') ? state.valueOne + 0 : 0;
   }
-  console.log("val1: ", state.valueOne, "val2: ", state.valueTwo);
+  console.log("val1: ", state.valueOne, "opeartion: ", state.operation, "val2: ", state.valueTwo);
+
 }
 
 // Decimal Button
@@ -84,7 +87,8 @@ function handleDecimal() {
   else {
     state.valueOne = `${state.valueOne}`.includes('.') ? state.valueOne : state.valueOne + '.';
   }
-  console.log("val1: ", state.valueOne, "val2: ", state.valueTwo);
+  console.log("val1: ", state.valueOne, "opeartion: ", state.operation, "val2: ", state.valueTwo);
+
 }
 
 // Operators
@@ -96,13 +100,15 @@ function handleAddition() {
   if (state.operation === null) {
     // 2) Set state-operation to "add"
     state.operation = 'add'
-    console.log("pre: ", state.operation)
   }
   else {
     // 3) Else call evaluate, then set state.operation to "add"
     evaluate();
     state.operation = 'add'
   }
+
+  console.log("val1: ", state.valueOne, "opeartion: ", state.operation, "val2: ", state.valueTwo);
+
 }
 
 function evaluate() {
@@ -125,5 +131,5 @@ function evaluate() {
     }
   }
   state.valueTwo = 0;
-  console.log("val1: ", state.valueOne, "val2: ", state.valueTwo, "operation: ", state.operation);
+  console.log("val1: ", state.valueOne, "opeartion: ", state.operation, "val2: ", state.valueTwo);
 }
