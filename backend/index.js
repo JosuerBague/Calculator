@@ -39,7 +39,7 @@ function changeValue(e) {
   // 1) First, check if the number clicked is zero.
   if (+value === 0) {
     // 2) If the number clicked is zero, call handleZero.
-    handleZero()
+    handleZero(state.operation)
   } else {
     // 3) If the number clicked is not zero, call handleChange.
     handleChange(state.operation, value)
@@ -69,5 +69,20 @@ function handleZero(operatorNotNull) {
     state.valueOne = `${state.valueOne}`.includes('.') ? state.valueOne + 0 : 0;
   }
   console.log("val1: ", state.valueOne, "val2: ", state.valueTwo);
+}
 
-} 
+// Decimal Button
+const decimalButton = document.querySelector(".decimal");
+decimalButton.addEventListener("click", handleDecimal);
+
+function handleDecimal() {
+  // 1) Check if state.operator is null
+  if (state.operation) {
+    // 2) Change valueTwo
+    state.valueTwo = `${state.valueTwo}`.includes('.') ? state.valueTwo : state.valueTwo + '.';
+  }
+  else {
+    state.valueOne = `${state.valueOne}`.includes('.') ? state.valueOne : state.valueOne + '.';
+  }
+  console.log("val1: ", state.valueOne, "val2: ", state.valueTwo);
+}
