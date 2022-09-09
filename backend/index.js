@@ -93,25 +93,44 @@ function handleDecimal() {
 
 // Operators
 // Plus
-const addButton = document.querySelector(".op-plus");
-addButton.addEventListener("click", handleAddition);
-function handleAddition() {
-  // 1) Check if there is no previous operator in memory:
-  if (state.operation === null) {
-    // 2) Set state-operation to "add"
-    state.operation = 'add'
-  }
-  else {
-    // 3) Else call evaluate, then set state.operation to "add"
-    evaluate();
-    state.operation = 'add'
-  }
+const operatorButtons = document.querySelectorAll("[class*=op]")
+operatorButtons.forEach(button => {
+  button.addEventListener("click", handleOperation)
+})
 
+function handleOperation(e) {
+  incomingOperation = e.target.textContent;
+
+  // 1) Check if there is a previous operation stored in memory:
+  if (state.operation) {
+    evaluateOperation();
+  }
+  setOperator(incomingOperation);
   console.log("val1: ", state.valueOne, "opeartion: ", state.operation, "val2: ", state.valueTwo);
-
 }
 
-function evaluate() {
+function setOperator(operator) {
+  switch (operator) {
+    case "+": {
+      state.operation = "add";
+      break;
+    }
+    case "-": {
+      state.operation = "subtract";
+      break;
+    }
+    case "/": {
+      state.operation = "divide";
+      break;
+    }
+    case "*": {
+      state.operation = "multiply";
+      break;
+    }
+  }
+}
+
+function evaluateOperation() {
   switch (state.operation) {
     case "add": {
       state.valueOne = `${+state.valueOne + +state.valueTwo}`;
@@ -131,5 +150,4 @@ function evaluate() {
     }
   }
   state.valueTwo = 0;
-  console.log("val1: ", state.valueOne, "opeartion: ", state.operation, "val2: ", state.valueTwo);
 }
