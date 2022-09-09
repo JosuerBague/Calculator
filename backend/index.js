@@ -5,7 +5,6 @@ const state = {
   valueOne: 0,
   valueTwo: 0,
   operation: null,
-  lastKeyPressed: null
 }
 
 // Power button
@@ -43,14 +42,13 @@ function changeValue(e) {
     handleZero()
   } else {
     // 3) If the number clicked is not zero, call handleChange.
-    handleChange(value)
+    handleChange(state.operation, value)
   }
 }
 
-function handleChange(val) {
-  const operators = ["op-plus", "op-minus", "op-multiply", "op-divide"]
-  // 1) Check if the last key pressed was an operator.
-  if (operators.includes(state.lastKeyPressed)) {
+function handleChange(operatorNotNull, val) {
+  // 1) Check if state.operator is not null.
+  if (operatorNotNull) {
     // 2) If the last key pressed was an operator, then change valueTwo.
     state.valueTwo = state.valueTwo ? state.valueTwo + val : val;
   } else {
@@ -61,6 +59,15 @@ function handleChange(val) {
   console.log("val1: ", state.valueOne, "val2: ", state.valueTwo);
 }
 
-function handleZero() {
-  console.log("zeroed")
-}
+function handleZero(operatorNotNull) {
+  // 1) Check if operator is not null
+  if (operatorNotNull) {
+    // 2) Change valueTwo
+    state.valueTwo = `${state.valueTwo}`.includes('.') ? state.valueTwo + 0 : 0;
+  }
+  else {
+    state.valueOne = `${state.valueOne}`.includes('.') ? state.valueOne + 0 : 0;
+  }
+  console.log("val1: ", state.valueOne, "val2: ", state.valueTwo);
+
+} 
