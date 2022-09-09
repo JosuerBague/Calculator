@@ -46,6 +46,7 @@ function changeValue(e) {
     handleChange(value)
   }
 
+  handleDisplay();
   state.lastKeyAnOperator = false;
 }
 
@@ -92,6 +93,7 @@ function handleDecimal() {
   }
   console.log("val1: ", state.valueOne, "opeartion: ", state.operation, "val2: ", state.valueTwo);
 
+  handleDisplay();
   state.lastKeyAnOperator = false;
 }
 
@@ -158,3 +160,22 @@ function evaluateOperation() {
   state.valueTwo = 0;
 }
 
+// Handle Display
+function handleDisplay() {
+  const mainDisplay = document.querySelector(".display-main");
+
+  // 1) Check if there is a saved operator:
+  // 2) If there is no saved operator then show the value of val1
+  // 3) If there is a saved operator and the last key pressed was an operator show val1
+  // 4) If there is a save operator and the last key pressed was not an operator show val2
+
+  if (!state.operation) { // If there is no saved operator
+    mainDisplay.textContent = state.valueOne;
+  }
+  else if (state.operation && state.lastKeyAnOperator) {
+    mainDisplay.textContent = state.valueOne;
+  }
+  else if (state.operation && !state.lastKeyAnOperator) {
+    mainDisplay.textContent = state.valueTwo;
+  }
+}
