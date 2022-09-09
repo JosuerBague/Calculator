@@ -36,9 +36,9 @@ numericalButtons.forEach(button => {
 
 function handleChangeValue(e) {
   // Check if the number clicked is zero.
-  +value === 0 ? handleZero() : handleNonZero(e.target.textContent);
-  handleDisplay();
+  +e.target.textContent === 0 ? handleZero() : handleNonZero(e.target.textContent);
   STATE.lastKeyAnOperator = false;
+  handleDisplay();
 }
 
 function handleNonZero(val) {
@@ -85,42 +85,40 @@ operatorButtons.forEach(button => {
   operand = button.textContent;
 
   button.addEventListener("click", handleOperation)
-  // button.addEventListener("click", handleOperation)
 })
 
 function handleOperation(e) {
-  incomingOperation = e.target.textContent;
-
-  // 1) Check if there is a previous operation stored in memory && last key 
-  //    pressed was not an operator:
+  // Check if there is a previous operation stored in memory && last key 
+  // pressed was not an operator:
   if (STATE.operation && !STATE.lastKeyAnOperator) {
-    evaluateOperation();
+    operate(e.target.textContent, STATE.valueOne, STATE.valueTwo);
   }
-  setOperator(incomingOperation);
+
+  setOperator(e.target.textContent);
   STATE.lastKeyAnOperator = true;
-  console.log("val1: ", STATE.valueOne, "opeartion: ", STATE.operation, "val2: ", STATE.valueTwo);
+  handleDisplay()
 }
 
-// function setOperator(operator) {
-//   switch (operator) {
-//     case "+": {
-//       STATE.operation = "add";
-//       break;
-//     }
-//     case "-": {
-//       STATE.operation = "subtract";
-//       break;
-//     }
-//     case "/": {
-//       STATE.operation = "divide";
-//       break;
-//     }
-//     case "*": {
-//       STATE.operation = "multiply";
-//       break;
-//     }
-//   }
-// }
+function setOperator(operator) {
+  switch (operator) {
+    case "+": {
+      STATE.operation = "+";
+      break;
+    }
+    case "-": {
+      STATE.operation = "-";
+      break;
+    }
+    case "/": {
+      STATE.operation = "/";
+      break;
+    }
+    case "*": {
+      STATE.operation = "*";
+      break;
+    }
+  }
+}
 
 function operate(operator, num1, num2) {
   switch (operator) {
@@ -164,21 +162,30 @@ function handleDisplay() {
 }
 
 function add(num1, num2) {
-  return num1 + num2
+  STATE.total = +num1 + +num2;
+  STATE.valueOne = STATE.total;
+  STATE.valueTwo = 0;
 }
 
 function subtract(num1, num2) {
-  return num1 - num2
+  STATE.total = +num1 - +num2;
+  STATE.valueOne = STATE.total;
+  STATE.valueTwo = 0;
 }
 
 function multiply(num1, num2) {
-  return num1 * num2
+  STATE.total = +num1 * +num2;
+  STATE.valueOne = STATE.total;
+  STATE.valueTwo = 0;
 }
 
 function divide(num1, num2) {
   if (num2 === 0) {
     return "Cannot divide by zero"
   }
-  return num1 / num2
+
+  STATE.total = +num1 / +num2;
+  STATE.valueOne = STATE.total;
+  STATE.valueTwo = 0;
 }
 
