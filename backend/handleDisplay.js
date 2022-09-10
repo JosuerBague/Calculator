@@ -1,3 +1,5 @@
+import { STATE } from "./state.js";
+
 export default function handleDisplay() {
   const mainDisplay = document.querySelector(".display-main");
 

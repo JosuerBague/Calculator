@@ -1,3 +1,5 @@
+import { STATE } from "./state.js";
+
 export default function handleDecimal() {
   // If there is an operation store in memory, if true then change valueTwo.
   // Else change valueOne

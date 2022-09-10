@@ -1,3 +1,5 @@
+import { STATE } from "./state.js";
+
 function handleOperation(e) {
 
   // Check if there is a previous operation stored in memory && last key 

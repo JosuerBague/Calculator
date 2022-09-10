@@ -1,3 +1,5 @@
+import { STATE } from "./state.js";
+
 function clearAll() {
   STATE.total = 0;
   STATE.memoryTotal = 0;
