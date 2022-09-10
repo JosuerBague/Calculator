@@ -1,4 +1,4 @@
-import { STATE } from "./state";
+import { STATE } from "./state.js";
 
 function handleChangeValue(e) {
   // Check if the number clicked is zero.
