@@ -217,3 +217,12 @@ memClearButton.addEventListener("click", memClear)
 function memClear() {
   STATE.memoryTotal = 0;
 }
+
+// Memory Recall
+const memRecallButton = document.querySelector(".fn-memRecall");
+memRecallButton.addEventListener('click', memRecall)
+
+function memRecall() {
+  const mainDisplay = document.querySelector(".display-main");
+  mainDisplay.textContent = STATE.memoryTotal;
+}
