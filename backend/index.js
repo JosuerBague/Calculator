@@ -17,7 +17,7 @@ function togglePower() {
   const memoryIndicator = document.querySelector(".display-memory");
   const mainDisplay = document.querySelector(".display-main");
 
-  if (isPowered) {
+  if (STATE.isPowered) {
     memoryIndicator.style.opacity = 1;
     mainDisplay.style.opacity = 1;
   } else {
@@ -25,7 +25,7 @@ function togglePower() {
     mainDisplay.style.opacity = 0;
   }
 
-  isPowered = !isPowered;
+  STATE.isPowered = !STATE.isPowered;
 }
 
 // Numerical buttons
@@ -189,3 +189,23 @@ function divide(num1, num2) {
   STATE.valueTwo = 0;
 }
 
+// Clear Button
+const clearButton = document.querySelector('.fn-clear');
+clearButton.addEventListener('click', clearMemory);
+
+function clearMemory() {
+  STATE.total = 0;
+  STATE.memoryTotal = 0;
+  STATE.valueOne = 0;
+  STATE.valueTwo = 0;
+  STATE.operation = null;
+  STATE.lastKeyAnOperator = false;
+  STATE.isPowered = true;
+
+  const mainDisplay = document.querySelector('.display-main');
+
+  mainDisplay.textContent = "CLEAR";
+  setTimeout(() => {
+    mainDisplay.textContent = 0;
+  }, 750)
+}
