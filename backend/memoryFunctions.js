@@ -15,11 +15,14 @@ function clearAll() {
   setTimeout(() => {
     mainDisplay.textContent = 0;
   }, 750)
+
+  console.log(STATE)
 }
 
 function recallMemory() {
   const mainDisplay = document.querySelector(".display-main");
   mainDisplay.textContent = STATE.memoryTotal;
+  console.log(STATE)
 }
 
 function memPlus() {
@@ -27,11 +30,8 @@ function memPlus() {
 
   STATE.memoryTotal = +STATE.memoryTotal + +mainDisplay.textContent
 
-  if (STATE.operation && STATE.lastKeyAnOperator) {
-    STATE.valueTwo = 0;
-  } else {
-    STATE.valueOne = 0;
-  }
-
+  STATE.overwrite = true;
+  console.log(STATE)
 }
+
 export { clearAll, recallMemory, memPlus }
