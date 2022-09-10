@@ -1,4 +1,5 @@
 import { STATE } from "./state.js";
+import handleDisplay from "./handleDisplay.js";
 
 function handleChangeValue(e) {
   // Check if the number clicked is zero.

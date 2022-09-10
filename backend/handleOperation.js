@@ -1,4 +1,5 @@
 import { STATE } from "./state.js";
+import handleDisplay from "./handleDisplay.js";
 
 function handleOperation(e) {
 
@@ -10,7 +11,7 @@ function handleOperation(e) {
   }
 
   setOperator(e.target.textContent);
-
+  STATE.lastKeyAnOperator = true;
   console.log(STATE)
 }
 
