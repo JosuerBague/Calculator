@@ -89,9 +89,9 @@ operatorButtons.forEach(button => {
 
 function handleOperation(e) {
   // Check if there is a previous operation stored in memory && last key 
-  // pressed was not an operator:
+  // pressed was not an operator, carry out the stored operation:
   if (STATE.operation && !STATE.lastKeyAnOperator) {
-    operate(e.target.textContent, STATE.valueOne, STATE.valueTwo);
+    operate(STATE.operation, STATE.valueOne, STATE.valueTwo);
   }
 
   setOperator(e.target.textContent);
