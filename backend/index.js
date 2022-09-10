@@ -1,32 +1,10 @@
+import togglePower from "./togglePower.js";
+
 // Create global STATE object:
-const STATE = {
-  total: 0,
-  memoryTotal: 0,
-  valueOne: 0,
-  valueTwo: 0,
-  operation: null,
-  lastKeyAnOperator: false, // Tracks if the last key pressed was an operator
-  isPowered: false,
-}
 
 // Power button
 const powerButton = document.querySelector(".fn-power");
 powerButton.addEventListener("click", togglePower);
-
-function togglePower() {
-  const memoryIndicator = document.querySelector(".display-memory");
-  const mainDisplay = document.querySelector(".display-main");
-
-  if (STATE.isPowered) {
-    memoryIndicator.style.opacity = 1;
-    mainDisplay.style.opacity = 1;
-  } else {
-    memoryIndicator.style.opacity = 0;
-    mainDisplay.style.opacity = 0;
-  }
-
-  STATE.isPowered = !STATE.isPowered;
-}
 
 // Numerical buttons
 const numericalButtons = document.querySelectorAll("[class*=num]");
@@ -38,21 +16,39 @@ function handleChangeValue(e) {
   // Check if the number clicked is zero.
   +e.target.textContent === 0 ? handleZero() : handleNonZero(e.target.textContent);
   STATE.lastKeyAnOperator = false;
+  STATE.overwrite = false;
   handleDisplay();
+  console.log(STATE)
 }
 
 function handleNonZero(val) {
-  // If the last key pressed was an operator, then change valueTwo.
+  // If there is an operation stored in memory, if true then change valueTwo.
   // Else change valueOne
   if (STATE.operation) {
+
+    // Check if number click happens post memory function click:
+    if (STATE.overwrite) {
+      STATE.valueTwo = val;
+      STATE.overwrite = false;
+      return
+    }
+
     STATE.valueTwo = STATE.valueTwo ? STATE.valueTwo + val : val;
+
   } else {
+
+    if (STATE.overwrite) {
+      STATE.valueOne = val;
+      STATE.overwrite = false;
+      return;
+    }
+
     STATE.valueOne = STATE.valueOne ? STATE.valueOne + val : val;
   }
 }
 
 function handleZero() {
-  // If the last key pressed was an operator, then change valueTwo.
+  // If there is an operation stored in memory, if true then change valueTwo.
   // Else change valueOne
   if (STATE.operation) {
     STATE.valueTwo = STATE.valueTwo === 0 ? 0 : `${STATE.valueTwo + 0}`;
@@ -67,7 +63,7 @@ const decimalButton = document.querySelector(".decimal");
 decimalButton.addEventListener("click", handleDecimal);
 
 function handleDecimal() {
-  // If the last key pressed was an operator, then change valueTwo.
+  // If there is an operation store in memory, if true then change valueTwo.
   // Else change valueOne
   if (STATE.operation) {
     STATE.valueTwo = `${STATE.valueTwo}`.includes('.') ? STATE.valueTwo : STATE.valueTwo + '.';
@@ -82,21 +78,23 @@ function handleDecimal() {
 // Operators
 const operatorButtons = document.querySelectorAll("[class*=op]")
 operatorButtons.forEach(button => {
-  operand = button.textContent;
+  const operand = button.textContent;
 
   button.addEventListener("click", handleOperation)
 })
 
 function handleOperation(e) {
+
   // Check if there is a previous operation stored in memory && last key 
   // pressed was not an operator, carry out the stored operation:
   if (STATE.operation && !STATE.lastKeyAnOperator) {
     operate(STATE.operation, STATE.valueOne, STATE.valueTwo);
+    handleDisplay()
   }
 
   setOperator(e.target.textContent);
-  STATE.lastKeyAnOperator = true;
-  handleDisplay()
+
+  console.log(STATE)
 }
 
 function setOperator(operator) {
@@ -139,6 +137,8 @@ function operate(operator, num1, num2) {
       break;
     }
   }
+
+  STATE.operation = null
 }
 
 // Handle Display
@@ -232,6 +232,14 @@ const memPlusButton = document.querySelector('.fn-memPlus');
 memPlusButton.addEventListener('click', memPlus);
 
 function memPlus() {
-  // 1) Check if there is an operation stored in memory.
-  // 2) If there is an operation stored in memory
+  const mainDisplay = document.querySelector('.display-main');
+
+  STATE.memoryTotal = +STATE.memoryTotal + +mainDisplay.textContent
+
+  if (STATE.operation && STATE.lastKeyAnOperator) {
+    STATE.valueTwo = 0;
+  } else {
+    STATE.valueOne = 0;
+  }
+
 }
