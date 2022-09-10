@@ -2,7 +2,7 @@ import togglePower from "./togglePower.js";
 import handleChangeValue from "./handleChangeValue.js";
 import handleDecimal from "./handleDecimal.js"
 import handleOperation from "./handleOperation.js";
-import { clearAll, recallMemory, memPlus } from "./memoryFunctions.js";
+import { clearAll, recallMemory, memPlus, memSubtract } from "./memoryFunctions.js";
 import { STATE } from "./state.js";
 
 // Create global STATE object:
@@ -52,3 +52,7 @@ memRecallButton.addEventListener('click', recallMemory)
 const memPlusButton = document.querySelector('.fn-memPlus');
 memPlusButton.addEventListener('click', memPlus);
 
+
+// Memory Subtract
+const memSubtractButton = document.querySelector(".fn-memSubtract");
+memSubtractButton.addEventListener('click', memSubtract);

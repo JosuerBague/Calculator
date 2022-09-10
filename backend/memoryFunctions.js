@@ -22,6 +22,17 @@ function clearAll() {
 function recallMemory() {
   const mainDisplay = document.querySelector(".display-main");
   mainDisplay.textContent = STATE.memoryTotal;
+
+  // If there is an operation stored in memory, modify valueTwo,
+  // else modify valueOne
+  if (STATE.operation) {
+    STATE.valueTwo = STATE.memoryTotal;
+  }
+  else {
+    STATE.valueOne = STATE.memoryTotal;
+  }
+
+  STATE.lastKeyAnOperator = false;
   console.log(STATE)
 }
 
@@ -31,7 +42,20 @@ function memPlus() {
   STATE.memoryTotal = +STATE.memoryTotal + +mainDisplay.textContent
 
   STATE.overwrite = true;
+  STATE.lastKeyAnOperator = false;
+
   console.log(STATE)
 }
 
-export { clearAll, recallMemory, memPlus }
+function memSubtract() {
+  const mainDisplay = document.querySelector('.display-main');
+
+  STATE.memoryTotal = +STATE.memoryTotal - +mainDisplay.textContent;
+
+  STATE.overwrite = true;
+  STATE.lastKeyAnOperator = false;
+
+  console.log(STATE);
+}
+
+export { clearAll, recallMemory, memPlus, memSubtract }
