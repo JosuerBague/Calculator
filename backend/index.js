@@ -226,3 +226,12 @@ function memRecall() {
   const mainDisplay = document.querySelector(".display-main");
   mainDisplay.textContent = STATE.memoryTotal;
 }
+
+// Memory Plus
+const memPlusButton = document.querySelector('.fn-memPlus');
+memPlusButton.addEventListener('click', memPlus);
+
+function memPlus() {
+  // 1) Check if there is an operation stored in memory.
+  // 2) If there is an operation stored in memory
+}
