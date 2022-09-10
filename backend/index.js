@@ -209,3 +209,11 @@ function clearMemory() {
     mainDisplay.textContent = 0;
   }, 750)
 }
+
+// Memory Clear
+const memClearButton = document.querySelector('.fn-memClear');
+memClearButton.addEventListener("click", memClear)
+
+function memClear() {
+  STATE.memoryTotal = 0;
+}
