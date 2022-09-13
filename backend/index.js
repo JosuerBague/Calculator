@@ -1,7 +1,8 @@
 import togglePower from "./togglePower.js";
 import handleChangeValue from "./handleChangeValue.js";
 import handleDecimal from "./handleDecimal.js"
-import handleOperation from "./handleOperation.js";
+import { handleOperation } from "./handleOperation.js";
+import handleEquals from "./handleEquals.js";
 import { clearAll, recallMemory, memPlus, memSubtract } from "./memoryFunctions.js";
 import { STATE } from "./state.js";
 
@@ -24,7 +25,6 @@ decimalButton.addEventListener("click", handleDecimal);
 // Operators
 const operatorButtons = document.querySelectorAll("[class*=op]")
 operatorButtons.forEach(button => {
-  const operand = button.textContent;
 
   button.addEventListener("click", handleOperation)
 })
@@ -56,3 +56,7 @@ memPlusButton.addEventListener('click', memPlus);
 // Memory Subtract
 const memSubtractButton = document.querySelector(".fn-memSubtract");
 memSubtractButton.addEventListener('click', memSubtract);
+
+// Equals Button
+const equalsButton = document.querySelector('.equals');
+equalsButton.addEventListener('click', handleEquals);

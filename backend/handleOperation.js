@@ -2,7 +2,6 @@ import { STATE } from "./state.js";
 import handleDisplay from "./handleDisplay.js";
 
 function handleOperation(e) {
-
   // Check if there is a previous operation stored in memory && last key 
   // pressed was not an operator, carry out the stored operation:
   if (STATE.operation && !STATE.lastKeyAnOperator) {
@@ -16,6 +15,7 @@ function handleOperation(e) {
 }
 
 function setOperator(operator) {
+
   switch (operator) {
     case "+": {
       STATE.operation = "+";
@@ -54,30 +54,31 @@ function operate(operator, num1, num2) {
       divide(num1, num2);
       break;
     }
+
   }
 
-  STATE.operation = null
+  STATE.postOperation = true;
 }
 
-function add(num1, num2) {
+function add(num1, num2 = num1) {
   STATE.total = +num1 + +num2;
   STATE.valueOne = STATE.total;
   STATE.valueTwo = 0;
 }
 
-function subtract(num1, num2) {
+function subtract(num1, num2 = num1) {
   STATE.total = +num1 - +num2;
   STATE.valueOne = STATE.total;
   STATE.valueTwo = 0;
 }
 
-function multiply(num1, num2) {
+function multiply(num1, num2 = num1) {
   STATE.total = +num1 * +num2;
   STATE.valueOne = STATE.total;
   STATE.valueTwo = 0;
 }
 
-function divide(num1, num2) {
+function divide(num1, num2 = num1) {
   if (num2 === 0) {
     return "Cannot divide by zero"
   }
@@ -89,4 +90,4 @@ function divide(num1, num2) {
 
 
 
-export default handleOperation;
+export { handleOperation, setOperator, operate }

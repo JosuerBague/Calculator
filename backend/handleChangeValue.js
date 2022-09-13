@@ -6,6 +6,7 @@ function handleChangeValue(e) {
   +e.target.textContent === 0 ? handleZero() : handleNonZero(e.target.textContent);
   STATE.lastKeyAnOperator = false;
   STATE.overwrite = false;
+  STATE.postOperation = false;
   handleDisplay();
   console.log(STATE)
 }
