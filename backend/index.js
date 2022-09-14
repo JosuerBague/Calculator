@@ -62,8 +62,8 @@ memSubtractButton.addEventListener('click', memSubtract);
 const equalsButton = document.querySelector('.equals');
 equalsButton.addEventListener('click', handleEquals);
 
-console.log(test(1));
-console.log(test(20));
-console.log(test(300));
-console.log(test(4000));
-console.log(test(50000));
+console.log(test("1.1"));
+console.log(test("20.12"));
+console.log(test("300.123"));
+console.log(test("4000.1234"));
+console.log(test("50000.12345"));

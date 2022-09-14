@@ -3,8 +3,9 @@
 */
 
 export default function floatFixer(data) {
+  let decimalPart = data.split('.')[1] || '';
   let temp = '1'
-  for (let i = data.toString().length - 1; i >= 0; i--) {
+  for (let i = decimalPart.length - 1; i >= 0; i--) {
     temp += '0';
   }
   return +temp
