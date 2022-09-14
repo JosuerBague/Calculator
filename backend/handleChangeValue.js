@@ -12,28 +12,21 @@ function handleChangeValue(e) {
 }
 
 function handleNonZero(val) {
+  // Check if the number input happens right after invoking a memory function.
+  // In such a case the input should overwrite the current value stored.
+  if (STATE.overwrite) {
+    STATE.valueTwo = val;
+    STATE.overwrite = false;
+    return
+  }
+
   // If there is an operation stored in memory, if true then change valueTwo.
   // Else change valueOne
   if (STATE.operation) {
-
-    // Check if number click happens post memory function click:
-    if (STATE.overwrite) {
-      STATE.valueTwo = val;
-      STATE.overwrite = false;
-      return
-    }
-
-    STATE.valueTwo = STATE.valueTwo ? STATE.valueTwo + val : val;
+    STATE.valueTwo = STATE.valueTwo !== "0" ? STATE.valueTwo + val : val;
 
   } else {
-
-    if (STATE.overwrite) {
-      STATE.valueOne = val;
-      STATE.overwrite = false;
-      return;
-    }
-
-    STATE.valueOne = STATE.valueOne ? STATE.valueOne + val : val;
+    STATE.valueOne = STATE.valueOne !== "0" ? STATE.valueOne + val : val;
   }
 }
 
