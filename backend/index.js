@@ -5,6 +5,7 @@ import { handleOperation } from "./handleOperation.js";
 import handleEquals from "./handleEquals.js";
 import { clearAll, recallMemory, memPlus, memSubtract } from "./memoryFunctions.js";
 import { STATE } from "./state.js";
+import test from "./floatFixer.js";
 
 // Create global STATE object:
 
@@ -60,3 +61,9 @@ memSubtractButton.addEventListener('click', memSubtract);
 // Equals Button
 const equalsButton = document.querySelector('.equals');
 equalsButton.addEventListener('click', handleEquals);
+
+console.log(test(1));
+console.log(test(20));
+console.log(test(300));
+console.log(test(4000));
+console.log(test(50000));

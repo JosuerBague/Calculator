@@ -61,20 +61,21 @@ function operate(operator, num1, num2) {
 }
 
 function add(num1, num2 = num1) {
-  STATE.total = +num1 + +num2;
-  STATE.valueOne = STATE.total;
+  STATE.total = +num1 * 100 + +num2 *
+   100;
+  STATE.valueOne = STATE.total / 100;
   STATE.valueTwo = 0;
 }
 
 function subtract(num1, num2 = num1) {
-  STATE.total = +num1 - +num2;
-  STATE.valueOne = STATE.total;
+  STATE.total = +num1 * 100 - +num2 * 100;
+  STATE.valueOne = STATE.total / 100;
   STATE.valueTwo = 0;
 }
 
 function multiply(num1, num2 = num1) {
-  STATE.total = +num1 * +num2;
-  STATE.valueOne = STATE.total;
+  STATE.total = +num1 * 100 * +num2 * 100;
+  STATE.valueOne = STATE.total / 10000;
   STATE.valueTwo = 0;
 }
 
@@ -83,8 +84,8 @@ function divide(num1, num2 = num1) {
     return "Cannot divide by zero"
   }
 
-  STATE.total = +num1 / +num2;
-  STATE.valueOne = STATE.total;
+  STATE.total = +num1 * 100 / +num2 * 100;
+  STATE.valueOne = STATE.total / 100;
   STATE.valueTwo = 0;
 }
 

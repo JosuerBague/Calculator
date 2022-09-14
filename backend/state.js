@@ -1,10 +1,10 @@
 export const STATE = {
-  _total: 0,
-  _memoryTotal: 0,
+  _total: "0",
+  _memoryTotal: "0",
   _overwrite: false,
   _postOperation: false,
-  _valueOne: 0,
-  _valueTwo: 0,
+  _valueOne: "0",
+  _valueTwo: "0",
   _operation: null,
   _lastKeyAnOperator: false, // Tracks if the last key pressed was an operator
   _isPowered: false,
