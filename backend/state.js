@@ -10,7 +10,7 @@ export const STATE = {
   _isPowered: false,
 
   set total(val) {
-    this._total = val;
+    this._total = val.toString();
   },
 
   get total() {
@@ -18,7 +18,7 @@ export const STATE = {
   },
 
   set memoryTotal(val) {
-    this._setMemoryTotal = val;
+    this._setMemoryTotal = val.toString();
   },
 
   get memoryTotal() {
@@ -42,7 +42,7 @@ export const STATE = {
   },
 
   set valueOne(val) {
-    this._valueOne = val;
+    this._valueOne = val.toString();
   },
 
   get valueOne() {
@@ -50,7 +50,7 @@ export const STATE = {
   },
 
   set valueTwo(val) {
-    this._valueTwo = val;
+    this._valueTwo = val.toString();
   },
 
   get valueTwo() {

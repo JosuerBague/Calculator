@@ -13,6 +13,7 @@ export default function handleDisplay() {
 
   if (!STATE.operation) {
     // If there is no saved operator, then the change is done on first operand:
+
     mainDisplay.textContent = format(STATE.valueOne);
   }
   else if (STATE.operation && !STATE.postOperation) {
@@ -22,6 +23,7 @@ export default function handleDisplay() {
   }
   else if (STATE.operation && STATE.postOperation) {
     // If there is a saved operation and it is post Operation
+    console.log(typeof STATE.valueOne);
     mainDisplay.textContent = format(STATE.valueOne);
   }
 }
