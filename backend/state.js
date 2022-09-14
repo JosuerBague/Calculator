@@ -1,83 +1,83 @@
 export const STATE = {
-  total: 0,
-  memoryTotal: 0,
-  overwrite: false,
-  postOperation: false,
-  valueOne: 0,
-  valueTwo: 0,
-  operation: null,
-  lastKeyAnOperator: false, // Tracks if the last key pressed was an operator
-  isPowered: false,
+  _total: 0,
+  _memoryTotal: 0,
+  _overwrite: false,
+  _postOperation: false,
+  _valueOne: 0,
+  _valueTwo: 0,
+  _operation: null,
+  _lastKeyAnOperator: false, // Tracks if the last key pressed was an operator
+  _isPowered: false,
 
   set total(val) {
-    this.total = val;
+    this._total = val;
   },
 
   get total() {
-    return this.total;
+    return this._total;
   },
 
   set memoryTotal(val) {
-    this.setMemoryTotal = val;
+    this._setMemoryTotal = val;
   },
 
   get memoryTotal() {
-    return this.memoryTotal;
+    return this._memoryTotal;
   },
 
   set overwrite(val) {
-    this.overwrite = val;
+    this._overwrite = val;
   },
 
   get overwrite() {
-    return this.overwrite;
+    return this._overwrite;
   },
 
   set postOperation(val) {
-    this.postOperation = val;
+    this._postOperation = val;
   },
 
   get postOperation() {
-    return this.postOperation
+    return this._postOperation
   },
 
   set valueOne(val) {
-    this.valueOne = val;
+    this._valueOne = val;
   },
 
   get valueOne() {
-    return this.valueOne;
+    return this._valueOne;
   },
 
   set valueTwo(val) {
-    this.valueTwo = val;
+    this._valueTwo = val;
   },
 
   get valueTwo() {
-    return this.valueTwo;
+    return this._valueTwo;
   },
 
   set operation(val) {
-    this.operation = val;
+    this._operation = val;
   },
 
   get operation() {
-    return this.operation;
+    return this._operation;
   },
 
   set lastKeyAnOperator(val) {
-    this.lastKeyAnOperator = val;
+    this._lastKeyAnOperator = val;
   },
 
   get lastKeyAnOperator() {
-    return this.lastKeyAnOperator;
+    return this._lastKeyAnOperator;
   },
 
   set isPowered(val) {
-    this.isPowered = val;
+    this._isPowered = val;
   },
 
   get isPowered() {
-    return this.isPowered;
+    return this._isPowered;
   },
 }
