@@ -1,9 +1,24 @@
 export default function format(data) {
   // If the data contains a decimal
-  let [whole, fract] = data.split('.');
-
+  let [whole, fract] = truncate(data).split('.');
   whole = addCommas(whole);
-  return data;
+
+  if (fract) {
+    return [whole, fract].join('.'); 0
+  }
+
+  return whole;
+}
+
+export function truncate(data) {
+  let maxIndex = data.includes('.') ? 16 : 15;
+
+  let valueAfterMaxIndex = data.slice(maxIndex + 1, maxIndex + 2);
+  let valueAtMaxIndex = data.slice(maxIndex, maxIndex + 1);
+  console.log(valueAfterMaxIndex, valueAtMaxIndex, data)
+
+
+  return `${data.slice(0, maxIndex)}${valueAfterMaxIndex >= 5 ? parseInt(valueAtMaxIndex) + 1 : valueAtMaxIndex}`
 }
 
 
@@ -26,3 +41,5 @@ function addCommas(data) {
 
   return chunks.reverse().join(',')
 }
+
+
