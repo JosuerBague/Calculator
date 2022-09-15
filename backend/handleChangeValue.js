@@ -2,6 +2,18 @@ import { STATE } from "./state.js";
 import handleDisplay from "./handleDisplay.js";
 
 function handleChangeValue(e) {
+  const mainDisplay = document.querySelector('.display-main');
+
+  const currDisplay = mainDisplay.textContent.replace(/\W+/g, '');
+
+  if (currDisplay.length >= 16) {
+    STATE.lastKeyAnOperator = false;
+    STATE.overwrite = false;
+    STATE.postOperation = false;
+    console.log("not updating")
+    return;
+  }
+
   // Check if the number clicked is zero.
   +e.target.textContent === 0 ? handleZero() : handleNonZero(e.target.textContent);
   STATE.lastKeyAnOperator = false;
