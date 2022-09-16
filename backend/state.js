@@ -8,6 +8,7 @@ export const STATE = {
   _operation: null,
   _lastKeyAnOperator: false, // Tracks if the last key pressed was an operator
   _isPowered: false,
+  _error: false,
 
   set total(val) {
     this._total = val.toString();

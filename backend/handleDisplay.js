@@ -2,6 +2,10 @@ import { STATE } from "./state.js";
 import format from "./format.js";
 
 export default function handleDisplay() {
+  if (STATE.isError) {
+    return
+  }
+
   const mainDisplay = document.querySelector(".display-main");
 
   if (!STATE.operation) {

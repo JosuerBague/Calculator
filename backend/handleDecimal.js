@@ -2,6 +2,10 @@ import { STATE } from "./state.js";
 import handleDisplay from "./handleDisplay.js";
 
 export default function handleDecimal() {
+  if (STATE.isError) {
+    return
+  }
+
   // If there is an operation store in memory, if true then change valueTwo.
   // Else change valueOne
   if (STATE.operation) {

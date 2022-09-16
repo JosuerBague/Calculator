@@ -3,6 +3,10 @@ import handleDisplay from "./handleDisplay.js";
 import floatFixer from "./floatFixer.js";
 
 function handleOperation(e) {
+  if (STATE.isError) {
+    return
+  }
+
   // Check if there is a previous operation stored in memory && last key 
   // pressed was not an operator, carry out the stored operation:
   if (STATE.operation && !STATE.lastKeyAnOperator) {

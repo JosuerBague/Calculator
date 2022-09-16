@@ -6,21 +6,15 @@ function handleChangeValue(e) {
 
   const currDisplay = mainDisplay.textContent.replace(/\W+/g, '');
 
-  if (currDisplay.length >= 16) {
+  if (currDisplay.length <= 16) {
+    // Check if the number clicked is zero.
+    +e.target.textContent === 0 ? handleZero() : handleNonZero(e.target.textContent);
     STATE.lastKeyAnOperator = false;
     STATE.overwrite = false;
     STATE.postOperation = false;
-    console.log("not updating")
-    return;
+    handleDisplay();
+    console.log(STATE)
   }
-
-  // Check if the number clicked is zero.
-  +e.target.textContent === 0 ? handleZero() : handleNonZero(e.target.textContent);
-  STATE.lastKeyAnOperator = false;
-  STATE.overwrite = false;
-  STATE.postOperation = false;
-  handleDisplay();
-  console.log(STATE)
 }
 
 function handleNonZero(val) {
