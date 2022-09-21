@@ -8,26 +8,6 @@ export default function handleDisplay(name) {
   if (STATE.isError) {
     return
   }
-
-  if (STATE._overwrite) {
-    mainDisplay.textContent = format(STATE[name]);
-    return;
-  }
-
-  // If the click happens post operation:
-  if (STATE.postOperation) {
-    mainDisplay.textContent = format(STATE[name]);
-    return
-  }
-
-  // If there is no saved operator, then change the first operand:
-  if (!STATE.operation) {
-    mainDisplay.textContent = format(STATE[name]);
-    return
-  }
-  // If there is a saved operator, but not post operation,
-  // Change the 2nd value:
-  if (STATE.operation && !STATE.postOperation) {
-    mainDisplay.textContent = format(STATE[name]);
-  }
+  
+  mainDisplay.textContent = format(STATE[name]);
 }
