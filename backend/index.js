@@ -1,11 +1,11 @@
 import togglePower from "./togglePower.js";
-import handleChangeValue from "./handleChangeValue.js";
+import handleNumeralClick from "./handleNumeralClick.js";
+import handleZero from "./handleZero.js";
 import handleDecimal from "./handleDecimal.js"
 import { handleOperation } from "./handleOperation.js";
 import handleEquals from "./handleEquals.js";
 import { clearAll, recallMemory, memPlus, memSubtract } from "./memoryFunctions.js";
 import { STATE } from "./state.js";
-import { truncate } from "./format.js";
 
 // Create global STATE object:
 
@@ -16,8 +16,12 @@ powerButton.addEventListener("click", togglePower);
 // Numerical buttons
 const numericalButtons = document.querySelectorAll("[class*=num]");
 numericalButtons.forEach(button => {
-  button.addEventListener('click', handleChangeValue)
+  button.addEventListener('click', handleNumeralClick)
 })
+
+// Zero button
+const zeroButton = document.querySelector(".zero");
+zeroButton.addEventListener('click', handleZero);
 
 // Decimal Button
 const decimalButton = document.querySelector(".decimal");
