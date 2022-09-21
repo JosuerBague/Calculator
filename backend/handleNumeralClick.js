@@ -15,9 +15,12 @@ function handleNumeralClick(e) {
 
   // If there is no stored operation change valueOne:
   if (!STATE._operation) {
+
+    if (STATE._valueOne.replace('.', '').length === 16) return;
     changeValue('_valueOne', e.target.textContent);
   }
   else {
+    if (STATE._valueTwo.replace('.', '').length === 16) return;
     changeValue('_valueTwo', e.target.textContent);
   }
   console.log(STATE)
