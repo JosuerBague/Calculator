@@ -10,5 +10,8 @@ export default function handleZero() {
     STATE.valueOne = STATE.valueOne === '0' ? '0' : STATE.valueOne + '0';
   }
 
+  STATE._lastKeyAnOperator = false;
+  STATE._overwrite = false;
+  STATE._postOperation = false;
   handleDisplay();
 }
