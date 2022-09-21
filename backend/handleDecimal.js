@@ -13,5 +13,6 @@ export default function handleDecimal() {
 
   STATE.postOperation = false;
   STATE.lastKeyAnOperator = false;
-  handleDisplay();
+  console.log(STATE)
+  handleDisplay(name);
 }

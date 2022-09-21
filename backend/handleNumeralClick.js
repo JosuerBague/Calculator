@@ -2,14 +2,16 @@ import { STATE } from "./state.js";
 import handleDisplay from "./handleDisplay.js";
 
 function handleNumeralClick(e) {
-  // If the click happens post memory plus or minus (overwrite === true),
-  // change valueTwo:
+  // If the click happens post memory plus or minus (overwrite === true) &&
+  // there is no saved operator in memory, change valueOne:
   if (STATE._overwrite) {
-    changeValue('_valueTwo', e.target.textContent);
+    let name = STATE._operation ? "_valueTwo" : "_valueOne";
+
+    changeValue(name, e.target.textContent);
+    handleDisplay(name);
     STATE._lastKeyAnOperator = false;
     STATE._overwrite = false;
     STATE._postOperation = false;
-    handleDisplay();
     return;
   }
 
@@ -18,20 +20,26 @@ function handleNumeralClick(e) {
 
     if (STATE._valueOne.replace('.', '').length === 16) return;
     changeValue('_valueOne', e.target.textContent);
+    handleDisplay('_valueOne');
+
   }
   else {
     if (STATE._valueTwo.replace('.', '').length === 16) return;
     changeValue('_valueTwo', e.target.textContent);
+    handleDisplay('_valueTwo');
   }
   console.log(STATE)
 
   STATE._lastKeyAnOperator = false;
   STATE._overwrite = false;
   STATE._postOperation = false;
-  handleDisplay();
 }
 
 function changeValue(name, input) {
+  if (STATE._overwrite) {
+    STATE[name] = input;
+  }
+
   STATE[name] = STATE[name] === '0' ? input : STATE[name] + input;
 }
 

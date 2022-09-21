@@ -12,12 +12,13 @@ function handleOperation(e) {
   // Evaluate: 
   if (STATE.operation && !STATE.lastKeyAnOperator) {
     operate(STATE.operation, STATE.valueOne, STATE.valueTwo);
-    handleDisplay()
+    handleDisplay("_total");
   }
 
   // Change the STATE operator to the operator preseed:
   setOperator(e.target.textContent);
   STATE.lastKeyAnOperator = true;
+  console.log(STATE)
 }
 
 function setOperator(operator) {
