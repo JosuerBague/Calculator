@@ -12,6 +12,7 @@ function handleNumeralClick(e) {
     STATE._lastKeyAnOperator = false;
     STATE._overwrite = false;
     STATE._postOperation = false;
+    console.log(STATE)
     return;
   }
 
@@ -21,15 +22,15 @@ function handleNumeralClick(e) {
     if (STATE._valueOne.replace('.', '').length === 16) return;
     changeValue('_valueOne', e.target.textContent);
     handleDisplay('_valueOne');
-
+    console.log('test')
   }
   else {
     if (STATE._valueTwo.replace('.', '').length === 16) return;
     changeValue('_valueTwo', e.target.textContent);
     handleDisplay('_valueTwo');
   }
-  console.log(STATE)
 
+  console.log(STATE)
   STATE._lastKeyAnOperator = false;
   STATE._overwrite = false;
   STATE._postOperation = false;
@@ -38,6 +39,7 @@ function handleNumeralClick(e) {
 function changeValue(name, input) {
   if (STATE._overwrite) {
     STATE[name] = input;
+    return;
   }
 
   STATE[name] = STATE[name] === '0' ? input : STATE[name] + input;
