@@ -3,11 +3,15 @@ import { STATE } from "./state.js";
 
 export default function handleZero() {
   console.log('clicked')
-  if (STATE.operation) {
-    STATE.valueTwo = STATE.valueTwo === '0' ? '0' : STATE.valueTwo + '0';
+  if (!STATE._operation) {
+
+    if (STATE._valueOne.replace('.', '').length === 16) return;
+    STATE._valueOne = STATE._valueOne === '0' ? '0' : STATE._valueOne + '0';
   }
   else {
-    STATE.valueOne = STATE.valueOne === '0' ? '0' : STATE.valueOne + '0';
+
+    if (STATE._valueTwo.replace('.', '').length === 16) return;
+    STATE._valueTwo = STATE._valueTwo === '0' ? '0' : STATE._valueTwo + '0';
   }
 
   STATE._lastKeyAnOperator = false;
