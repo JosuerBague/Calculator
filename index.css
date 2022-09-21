@@ -162,7 +162,7 @@ body {
 }
 
 /* Fifth Row */
-.num-zero {
+.zero {
   grid-column: 1/3;
   grid-row: 5/6;
 
