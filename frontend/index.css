@@ -25,13 +25,6 @@ body {
   height: min-content;
   padding-bottom: 1rem;
   border-radius: 25px;
-  /* background-color: rgb(255, 165, 0); */
-  /* background-color: rgb(136, 9, 108); */
-  /* background: rgb(68, 34, 60); */
-  /* background: linear-gradient(90deg, rgba(68, 34, 60, 1) 0%, rgba(136, 9, 108, 1) 35%, rgba(136, 9, 108, 1) 100%); */
-  /* background: rgb(68, 34, 60); */
-  /* background: linear-gradient(90deg, rgba(68, 34, 60, 1) 0%, rgba(136, 9, 108, 1) 35%, rgba(68, 34, 60, 1) 100%); */
-  /* background: rgb(68, 34, 60); */
   background: #3664c8;
 }
 
@@ -48,6 +41,7 @@ body {
 }
 
 .calculator-buttons {
+  /*container for calculator buttons*/
   width: 90%;
   min-height: 1rem;
   margin: 1px auto;
@@ -70,6 +64,23 @@ body {
   border-radius: 5px;
   background-color: lightgoldenrodyellow;
   border: 1px solid white;
+  position: relative;
+  overflow: hidden;
+}
+
+.calculator-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  transition: 0.5s;
+}
+
+.calculator-button:hover::before {
+  left: 100%;
 }
 
 /* First Row */
