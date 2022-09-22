@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 *,
 ::before,
 ::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Bebas Neue', cursive;
 }
 
 body {
@@ -22,7 +25,14 @@ body {
   height: min-content;
   padding-bottom: 1rem;
   border-radius: 25px;
-  background-color: orange;
+  /* background-color: rgb(255, 165, 0); */
+  /* background-color: rgb(136, 9, 108); */
+  /* background: rgb(68, 34, 60); */
+  /* background: linear-gradient(90deg, rgba(68, 34, 60, 1) 0%, rgba(136, 9, 108, 1) 35%, rgba(136, 9, 108, 1) 100%); */
+  /* background: rgb(68, 34, 60); */
+  /* background: linear-gradient(90deg, rgba(68, 34, 60, 1) 0%, rgba(136, 9, 108, 1) 35%, rgba(68, 34, 60, 1) 100%); */
+  /* background: rgb(68, 34, 60); */
+  background: #3664c8;
 }
 
 .calculator-display {
@@ -31,13 +41,14 @@ body {
   height: 3rem;
   margin: 1.5rem auto;
   border-radius: 5px;
-  background-color: wheat;
+  /* background-color: wheat; */
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
   position: relative;
 }
 
 .calculator-buttons {
   width: 90%;
-  border: 1px solid red;
   min-height: 1rem;
   margin: 1px auto;
   grid-template-columns: repeat(5, 90px);
@@ -52,80 +63,110 @@ body {
 .calculator-button {
   width: clamp(75px, 15%, 100px);
   height: clamp(75px, 15%, 100px);
-  border: 1px solid blue;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
   background-color: lightgoldenrodyellow;
+  border: 1px solid white;
 }
 
 /* First Row */
 .fn-memClear {
   grid-column: 1/2;
   grid-row: 1/2;
+  background-color: #020024;
+  color: #fff;
 }
 
 .fn-memRecall {
   grid-column: 2/3;
   grid-row: 1/2;
+  background-color: #020024;
+  color: #fff;
 }
 
 .fn-memSubtract {
   grid-column: 3/4;
   grid-row: 1/2;
+  background-color: #020024;
+  color: #fff;
 }
 
 .fn-memPlus {
   grid-column: 4/5;
   grid-row: 1/2;
+  background-color: #020024;
+  color: #fff;
 }
 
 .fn-clear {
   grid-column: 5/6;
   grid-row: 1/2;
+  background-color: #020024;
+  color: #fff;
 }
 
 /* Second Row */
 .num-seven {
   grid-column: 1/2;
   grid-row: 2/3;
+  background: linear-gradient(160deg, #020024 25%, #a60067);
+  color: #fff;
 }
 
 .num-eight {
   grid-column: 2/3;
   grid-row: 2/3;
+  background: linear-gradient(160deg, #020024 1%, #a60067 75%);
+  color: #fff;
 }
 
 .num-nine {
   grid-column: 3/4;
   grid-row: 2/3;
+  background: linear-gradient(160deg, #020024, #a60067 45%, #a60067);
+  color: #fff;
 }
 
 .fn-delete {
   grid-column: 4/5;
   grid-row: 2/3;
+  background-color: #a9f0d1;
+  background: linear-gradient(160deg, #020024, #a60067 45%, #a60067);
+}
+
+.fn-delete img {
+  width: 40%;
 }
 
 .op-divide {
   grid-column: 5/6;
   grid-row: 2/3;
+  background: linear-gradient(160deg, #020024, #a60067 45%, #a60067);
+  color: #fff;
 }
 
 /* Third Row */
 .num-four {
   grid-column: 1/2;
   grid-row: 3/4;
+  background: #a60067;
+  color: #fff;
 }
 
 .num-five {
   grid-column: 2/3;
   grid-row: 3/4;
+  background: #a60067;
+  color: #fff;
 }
 
 .num-six {
   grid-column: 3/4;
   grid-row: 3/4;
+  background: #a60067;
+  color: #fff;
 }
 
 .op-plus {
@@ -133,60 +174,88 @@ body {
   grid-row: 3/5;
 
   height: 165px;
+  background-color: #020024;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
 .op-multiply {
   grid-column: 5/6;
   grid-row: 3/4;
+  background: #a60067;
+  font-size: 1.2rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Arial";
+  font-weight: bold;
 }
+
 
 /* Fourth Row */
 .num-one {
   grid-column: 1/2;
   grid-row: 4/5;
+  background: linear-gradient(160deg, #a60067 45%, #020024);
+  color: #fff;
 }
 
 .num-two {
   grid-column: 2/3;
   grid-row: 4/5;
+  background: linear-gradient(160deg, #a60067 45%, #020024);
+  color: #fff;
 }
 
 .num-three {
   grid-column: 3/4;
   grid-row: 4/5;
+  background: linear-gradient(160deg, #a60067 45%, #020024);
+  color: #fff;
 }
 
 .op-minus {
   grid-column: 5/6;
   grid-row: 4/5;
+  background: linear-gradient(160deg, #a60067 25%, #020024);
+  color: #fff;
+  font-size: 2.5rem;
 }
 
 /* Fifth Row */
 .zero {
   grid-column: 1/3;
   grid-row: 5/6;
-
+  background-color: #020024;
   width: clamp(165px, 15%, 200px);
+  color: #fff;
 }
 
 .decimal {
   grid-column: 3/4;
   grid-row: 5/6;
+  background-color: #020024;
+  color: #fff;
 }
 
 .equals {
   grid-column: 5/6;
   grid-row: 5/6;
+  background-color: #020024;
+  color: #fff;
 }
 
 .fn-power {
   grid-column: 4/5;
   grid-row: 5/6;
+  background-color: #020024;
+  color: #fff;
 }
 
 .display-main {
   min-width: 75px;
-  border: 1px solid red;
   min-height: 100%;
   display: flex;
   justify-content: flex-end;
