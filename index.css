@@ -66,6 +66,9 @@ body {
   border: 1px solid white;
   position: relative;
   overflow: hidden;
+
+  box-shadow: 3px 3px 0 3px #930;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .calculator-button::before {
@@ -81,6 +84,11 @@ body {
 
 .calculator-button:hover::before {
   left: 100%;
+}
+
+.calculator-button:active {
+  box-shadow: 0 0 0 #930, inset 4px 4px 4px #930;
+  transform: translate(6px, 6px);
 }
 
 /* First Row */
