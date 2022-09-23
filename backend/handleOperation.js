@@ -4,20 +4,20 @@ import { add, subtract, multiply, divide } from "./mainOperations.js";
 
 function handleOperation(e) {
   // If the calculator is in error mode, do nothing:
-  if (STATE.isError) {
+  if (STATE._error) {
     return
   }
 
   // If there is no saved operator and the last key was not an operator:
   // Evaluate: 
-  if (STATE.operation && !STATE.lastKeyAnOperator) {
-    operate(STATE.operation, STATE.valueOne, STATE.valueTwo);
+  if (STATE._operation && STATE._lastKey !== 'operator') {
+    operate(STATE._operation, STATE._valueOne, STATE._valueTwo);
     handleDisplay("_total");
   }
 
   // Change the STATE operator to the operator preseed:
   setOperator(e.target.textContent);
-  STATE.lastKeyAnOperator = true;
+  STATE._lastKey = 'operator';
   console.log(STATE)
 }
 

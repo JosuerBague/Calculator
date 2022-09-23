@@ -6,7 +6,7 @@ export default function handleZero() {
 
   STATE[name] = STATE[name] === '0' ? '0' : STATE[name] + '0';
 
-  STATE._lastKeyAnOperator = false;
+  STATE._lastKey = 'numeral';
   STATE._overwrite = false;
   STATE._postOperation = false;
   handleDisplay(name);

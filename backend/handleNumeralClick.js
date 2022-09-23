@@ -9,7 +9,7 @@ function handleNumeralClick(e) {
 
     changeValue(name, e.target.textContent);
     handleDisplay(name);
-    STATE._lastKeyAnOperator = false;
+    STATE._lastKey = 'numeral';
     STATE._overwrite = false;
     STATE._postOperation = false;
     console.log(STATE)
@@ -31,7 +31,7 @@ function handleNumeralClick(e) {
   }
 
   console.log(STATE)
-  STATE._lastKeyAnOperator = false;
+  STATE._lastKey = 'numeral';
   STATE._overwrite = false;
   STATE._postOperation = false;
 }

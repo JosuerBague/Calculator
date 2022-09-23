@@ -6,7 +6,10 @@ export const STATE = {
   _valueOne: "0",
   _valueTwo: "0",
   _operation: null,
-  _lastKeyAnOperator: false, // Tracks if the last key pressed was an operator
+  _lastKey: null,
+  // _lastKeyAnOperator: false, // Tracks if the last key pressed was an operator
+  // _lastKeyEquals: false,
+  _lastStoredValue: '0',
   _isPowered: false,
   _error: false,
 
@@ -66,12 +69,12 @@ export const STATE = {
     return this._operation;
   },
 
-  set lastKeyAnOperator(val) {
-    this._lastKeyAnOperator = val;
+  set lastKey(val) {
+    this._lastKey = val;
   },
 
-  get lastKeyAnOperator() {
-    return this._lastKeyAnOperator;
+  get lastKey() {
+    return this._lastKey;
   },
 
   set isPowered(val) {

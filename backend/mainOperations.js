@@ -1,3 +1,6 @@
+import { STATE } from "./state.js";
+import floatFixer from "./floatFixer.js";
+
 function add(num1, num2 = num1) {
   let temp, num1Mod, num2Mod, divisor;
 
@@ -11,9 +14,9 @@ function add(num1, num2 = num1) {
   } else {
     temp = parseInt(num1) + parseInt(num2);
   }
-  STATE.total = temp
-  STATE.valueOne = STATE.total;
-  STATE.valueTwo = 0;
+  STATE._total = temp
+  STATE._valueOne = STATE._total;
+  STATE._valueTwo = 0;
 }
 
 function subtract(num1, num2 = num1) {
@@ -28,9 +31,9 @@ function subtract(num1, num2 = num1) {
   } else {
     temp = parseInt(num1) - parseInt(num2);
   }
-  STATE.total = temp;
-  STATE.valueOne = STATE.total;
-  STATE.valueTwo = 0;
+  STATE._total = temp;
+  STATE._valueOne = STATE._total;
+  STATE._valueTwo = 0;
 }
 
 function multiply(num1, num2 = num1) {
@@ -46,9 +49,9 @@ function multiply(num1, num2 = num1) {
     temp = parseInt(num1) * parseInt(num2);
   }
 
-  STATE.total = temp;
-  STATE.valueOne = STATE.total;
-  STATE.valueTwo = 0;
+  STATE._total = temp;
+  STATE._valueOne = STATE._total;
+  STATE._valueTwo = 0;
 }
 
 function divide(num1, num2 = num1) {
@@ -56,8 +59,8 @@ function divide(num1, num2 = num1) {
     return "Cannot divide by zero"
   }
 
+  // Perform the division:
   let temp, num1Mod, num2Mod, divisor;
-
   if (num1.includes('.') || num2.includes('.')) {
     num1Mod = floatFixer(num1);
     num2Mod = floatFixer(num2);
@@ -68,9 +71,11 @@ function divide(num1, num2 = num1) {
     temp = parseInt(num1) / parseInt(num2);
   }
 
-  STATE.total = temp;
-  STATE.valueOne = STATE.total;
-  STATE.valueTwo = 0;
+  // Check if the value is too small:
+
+  STATE._total = temp;
+  STATE._valueOne = STATE._total;
+  STATE._valueTwo = 0;
 }
 
 export { add, subtract, multiply, divide };

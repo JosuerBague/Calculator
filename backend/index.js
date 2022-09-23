@@ -4,8 +4,8 @@ import handleZero from "./handleZero.js";
 import handleDecimal from "./handleDecimal.js"
 import { handleOperation } from "./handleOperation.js";
 import handleEquals from "./handleEquals.js";
-import { clearAll, recallMemory, memPlus, memSubtract } from "./memoryFunctions.js";
-import { STATE } from "./state.js";
+import { clearAll, clearMemory, recallMemory, memPlus, memSubtract } from "./memoryFunctions.js";
+import handleDelete from "./handleDelete.js";
 
 // Create global STATE object:
 
@@ -43,11 +43,7 @@ clearButton.addEventListener('click', clearAll);
 
 // Memory Clear
 const memClearButton = document.querySelector('.fn-memClear');
-memClearButton.addEventListener("click", memClear)
-
-function memClear() {
-  STATE.memoryTotal = 0;
-}
+memClearButton.addEventListener("click", clearMemory)
 
 // Memory Recall
 const memRecallButton = document.querySelector(".fn-memRecall");
@@ -65,3 +61,7 @@ memSubtractButton.addEventListener('click', memSubtract);
 // Equals Button
 const equalsButton = document.querySelector('.equals');
 equalsButton.addEventListener('click', handleEquals);
+
+// Delete Button
+const deleteButton = document.querySelector('.fn-delete');
+deleteButton.addEventListener('click', handleDelete)

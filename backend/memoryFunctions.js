@@ -2,13 +2,13 @@ import { STATE } from "./state.js";
 import handleDisplay from "./handleDisplay.js";
 
 function clearAll() {
-  STATE.total = 0;
-  STATE.memoryTotal = 0;
-  STATE.valueOne = 0;
-  STATE.valueTwo = 0;
-  STATE.operation = null;
-  STATE.lastKeyAnOperator = false;
-  STATE.isPowered = true;
+  STATE._total = 0;
+  STATE._memoryTotal = 0;
+  STATE._valueOne = 0;
+  STATE._valueTwo = 0;
+  STATE._operation = null;
+  STATE._lastKey = 'clear all';
+  STATE._isPowered = true;
 
   const mainDisplay = document.querySelector('.display-main');
 
@@ -19,6 +19,11 @@ function clearAll() {
   console.log(STATE);
 }
 
+function clearMemory() {
+  STATE._memoryTotal = "0";
+  STATE._lastKey = 'memory clear';
+}
+
 function recallMemory() {
   // If there is an operation stored in memory, modify valueTwo,
   // else modify valueOne
@@ -26,7 +31,7 @@ function recallMemory() {
   STATE[name] = STATE._memoryTotal;
   handleDisplay("_memoryTotal")
 
-  STATE.lastKeyAnOperator = false;
+  STATE._lastKey = 'memory recall';
   console.log(STATE);
 }
 
@@ -38,7 +43,7 @@ function memPlus() {
   STATE._memoryTotal = (parseFloat(STATE._memoryTotal) + parseFloat(mainDisplay.textContent)).toString();
 
   STATE.overwrite = true;
-  STATE.lastKeyAnOperator = false;
+  STATE._lastKey = 'memory plus';
   console.log(STATE);
 }
 
@@ -48,8 +53,8 @@ function memSubtract() {
   STATE.memoryTotal = (parseFloat(STATE.memoryTotal) - parseFloat(mainDisplay.textContent)).toString();
 
   STATE.overwrite = true;
-  STATE.lastKeyAnOperator = false;
+  STATE._lastKey = 'memory subtract';
   console.log(STATE);
 }
 
-export { clearAll, recallMemory, memPlus, memSubtract }
+export { clearAll, recallMemory, memPlus, memSubtract, clearMemory }
