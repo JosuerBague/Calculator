@@ -1,18 +1,18 @@
 import { STATE } from "./state.js";
 import handleDisplay from "./handleDisplay.js";
 
-function clearAll() {
+function clearAll(e) {
+  const text = e.target.classList.contains("fn-clear") ? "CLEAR" : "WELCOME";
   STATE._total = "0";
   STATE._memoryTotal = "0";
   STATE._valueOne = "0";
   STATE._valueTwo = "0";
   STATE._operation = null;
   STATE._lastKey = 'clear all';
-  STATE._isPowered = true;
 
   const mainDisplay = document.querySelector('.display-main');
 
-  mainDisplay.textContent = "CLEAR";
+  mainDisplay.textContent = text;
   setTimeout(() => {
     mainDisplay.textContent = "0";
   }, 750);

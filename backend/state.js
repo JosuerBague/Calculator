@@ -10,7 +10,7 @@ export const STATE = {
   // _lastKeyAnOperator: false, // Tracks if the last key pressed was an operator
   // _lastKeyEquals: false,
   _lastStoredValue: '0',
-  _isPowered: false,
+  _isPowered: true,
   _error: false,
 
   set total(val) {

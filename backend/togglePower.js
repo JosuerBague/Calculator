@@ -1,18 +1,21 @@
 import { clearAll } from "./memoryFunctions.js";
 import { STATE } from "./state.js"
 
-export default function togglePower() {
+export default function togglePower(e) {
   const memoryIndicator = document.querySelector(".display-memory");
   const mainDisplay = document.querySelector(".display-main");
 
-  if (STATE._isPowered) {
-    memoryIndicator.style.opacity = 1;
-    mainDisplay.style.opacity = 1;
-  } else {
-    clearAll
+  STATE._isPowered = !STATE._isPowered;
+
+  if (!STATE._isPowered) {
+    clearAll(e);
     memoryIndicator.style.opacity = 0;
     mainDisplay.style.opacity = 0;
+  } else {
+    memoryIndicator.style.opacity = 1;
+    mainDisplay.style.opacity = 1;
   }
 
-  STATE._isPowered = !STATE._isPowered;
+
+  console.log(STATE._isPowered);
 }
