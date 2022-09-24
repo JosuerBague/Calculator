@@ -2,10 +2,10 @@ import { STATE } from "./state.js";
 import handleDisplay from "./handleDisplay.js";
 
 function clearAll() {
-  STATE._total = 0;
-  STATE._memoryTotal = 0;
-  STATE._valueOne = 0;
-  STATE._valueTwo = 0;
+  STATE._total = "0";
+  STATE._memoryTotal = "0";
+  STATE._valueOne = "0";
+  STATE._valueTwo = "0";
   STATE._operation = null;
   STATE._lastKey = 'clear all';
   STATE._isPowered = true;
@@ -14,9 +14,8 @@ function clearAll() {
 
   mainDisplay.textContent = "CLEAR";
   setTimeout(() => {
-    mainDisplay.textContent = 0;
+    mainDisplay.textContent = "0";
   }, 750);
-  console.log(STATE);
 }
 
 function clearMemory() {
@@ -32,7 +31,6 @@ function recallMemory() {
   handleDisplay("_memoryTotal")
 
   STATE._lastKey = 'memory recall';
-  console.log(STATE);
 }
 
 function memPlus() {
@@ -44,7 +42,6 @@ function memPlus() {
 
   STATE.overwrite = true;
   STATE._lastKey = 'memory plus';
-  console.log(STATE);
 }
 
 function memSubtract() {
@@ -54,7 +51,6 @@ function memSubtract() {
 
   STATE.overwrite = true;
   STATE._lastKey = 'memory subtract';
-  console.log(STATE);
 }
 
 export { clearAll, recallMemory, memPlus, memSubtract, clearMemory }
