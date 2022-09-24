@@ -15,7 +15,4 @@ export default function togglePower(e) {
     memoryIndicator.style.opacity = 1;
     mainDisplay.style.opacity = 1;
   }
-
-
-  console.log(STATE._isPowered);
 }
