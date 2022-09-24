@@ -12,7 +12,6 @@ function handleNumeralClick(e) {
     STATE._lastKey = 'numeral';
     STATE._overwrite = false;
     STATE._postOperation = false;
-    console.log(STATE)
     return;
   }
 
@@ -22,7 +21,6 @@ function handleNumeralClick(e) {
     if (STATE._valueOne.replace('.', '').length === 16) return;
     changeValue('_valueOne', e.target.textContent);
     handleDisplay('_valueOne');
-    console.log('test')
   }
   else {
     if (STATE._valueTwo.replace('.', '').length === 16) return;
@@ -30,7 +28,6 @@ function handleNumeralClick(e) {
     handleDisplay('_valueTwo');
   }
 
-  console.log(STATE)
   STATE._lastKey = 'numeral';
   STATE._overwrite = false;
   STATE._postOperation = false;
