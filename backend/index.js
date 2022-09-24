@@ -7,8 +7,6 @@ import handleEquals from "./handleEquals.js";
 import { clearAll, clearMemory, recallMemory, memPlus, memSubtract } from "./memoryFunctions.js";
 import handleDelete from "./handleDelete.js";
 
-// Create global STATE object:
-
 // Power button
 const powerButton = document.querySelector(".fn-power");
 powerButton.addEventListener("click", togglePower);

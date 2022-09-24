@@ -64,7 +64,7 @@ function operate(operator, num1, num2) {
 
   }
 
-  STATE.postOperation = true;
+  STATE._postOperation = true;
 }
 
 export { handleOperation, setOperator, operate }

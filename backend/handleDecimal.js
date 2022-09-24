@@ -2,7 +2,7 @@ import { STATE } from "./state.js";
 import handleDisplay from "./handleDisplay.js";
 
 export default function handleDecimal() {
-  if (STATE._isError) return;
+  if (STATE._error) return;
 
   // If there is an operation store in memory, if true then change valueTwo.
   // Else change valueOne
@@ -11,7 +11,7 @@ export default function handleDecimal() {
   if (STATE[name].includes('.')) return;
   STATE[name] = STATE[name] + '.';
 
-  STATE.postOperation = false;
-  STATE.lastKeyAnOperator = false;
+  STATE._postOperation = false;
+  STATE._lastKey = "numeral";
   handleDisplay(name);
 }
