@@ -8,10 +8,6 @@ function handleOperation(e) {
     return
   }
 
-  if (STATE.lastKey === 'equals') {
-    // STATE._valueOne = 
-  }
-
   // If there is no saved operator and the last key was not an operator:
   // Evaluate: 
   if (STATE._operation && STATE._lastKey === 'numeral') {
@@ -22,7 +18,7 @@ function handleOperation(e) {
   // Change the STATE operator to the operator preseed:
   setOperator(e.target.attributes.value.value);
   STATE._lastKey = 'operator';
-  console.log(STATE)
+  
 }
 
 function setOperator(operator) {

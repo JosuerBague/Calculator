@@ -16,5 +16,4 @@ export default function handleDelete() {
   }
 
   handleDisplay(name)
-  console.log(STATE)
 }
