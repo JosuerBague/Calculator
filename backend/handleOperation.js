@@ -8,15 +8,19 @@ function handleOperation(e) {
     return
   }
 
+  if (STATE.lastKey === 'equals') {
+    // STATE._valueOne = 
+  }
+
   // If there is no saved operator and the last key was not an operator:
   // Evaluate: 
-  if (STATE._operation && STATE._lastKey !== 'operator') {
+  if (STATE._operation && STATE._lastKey === 'numeral') {
     operate(STATE._operation, STATE._valueOne, STATE._valueTwo);
     handleDisplay("_total");
   }
 
   // Change the STATE operator to the operator preseed:
-  setOperator(e.target.textContent);
+  setOperator(e.target.attributes.value.value);
   STATE._lastKey = 'operator';
   console.log(STATE)
 }
