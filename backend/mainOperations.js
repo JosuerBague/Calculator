@@ -14,9 +14,9 @@ function add(num1, num2 = num1) {
   } else {
     temp = parseInt(num1) + parseInt(num2);
   }
-  STATE._total = temp
+  STATE._total = `${temp}`;
   STATE._valueOne = STATE._total;
-  STATE._valueTwo = 0;
+  STATE._valueTwo = "0";
 }
 
 function subtract(num1, num2 = num1) {
@@ -31,9 +31,9 @@ function subtract(num1, num2 = num1) {
   } else {
     temp = parseInt(num1) - parseInt(num2);
   }
-  STATE._total = temp;
+  STATE._total = `${temp}`;
   STATE._valueOne = STATE._total;
-  STATE._valueTwo = 0;
+  STATE._valueTwo = "0";
 }
 
 function multiply(num1, num2 = num1) {
@@ -49,9 +49,9 @@ function multiply(num1, num2 = num1) {
     temp = parseInt(num1) * parseInt(num2);
   }
 
-  STATE._total = temp;
+  STATE._total = `${temp}`;
   STATE._valueOne = STATE._total;
-  STATE._valueTwo = 0;
+  STATE._valueTwo = "0";
 }
 
 function divide(num1, num2 = num1) {
@@ -73,9 +73,9 @@ function divide(num1, num2 = num1) {
 
   // Check if the value is too small:
 
-  STATE._total = temp;
+  STATE._total = `${temp}`;
   STATE._valueOne = STATE._total;
-  STATE._valueTwo = 0;
+  STATE._valueTwo = "0";
 }
 
 export { add, subtract, multiply, divide };
