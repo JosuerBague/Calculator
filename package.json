@@ -1,0 +1,19 @@
+{
+  "name": "odin-calculator",
+  "version": "1.0.0",
+  "description": "A simple calculator for basic arithmetic",
+  "main": "frontend/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshDagat/Calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoshDagat/Calculator/issues"
+  },
+  "homepage": "https://github.com/JoshDagat/Calculator#readme"
+}
