@@ -10,10 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/JoshDagat/Calculator.git"
   },
-  "author": "",
+  "author": "Josuer Bague",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/JoshDagat/Calculator/issues"
   },
-  "homepage": "https://github.com/JoshDagat/Calculator#readme"
+  "homepage": "https://github.com/JoshDagat/Calculator#readme",
+  "dependencies": {
+    "gh-pages": "^4.0.0"
+  }
 }
