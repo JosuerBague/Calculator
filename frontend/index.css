@@ -9,6 +9,16 @@
   font-family: 'Bebas Neue', cursive;
 }
 
+:root {
+  --color-frame: #3664c8;
+  --color-display: #00000080;
+  --color-text: #fff;
+  --color-white: #fff;
+  --color-shadow: #930;
+  --color-buttons1: #020024;
+  --color-buttons2: #a60067;
+}
+
 body {
   width: 100%;
   min-height: 100vh;
@@ -17,26 +27,48 @@ body {
   align-items: center;
 }
 
+main {
+  flex: 1;
+}
+
 .calculator-frame {
   /* prevents margin collapse */
   padding-top: 1px;
+  margin: 0 auto;
 
-  width: 500px;
+  width: 100%;
+  max-width: 300px;
   height: min-content;
   padding-bottom: 1rem;
   border-radius: 25px;
-  background: #3664c8;
+  background: var(--color-frame);
+}
+
+@media screen and (min-width: 375px) {
+  .calculator-frame {
+    max-width: 500px;
+  }
+
+  main {
+    padding: 1em;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .calculator-frame {
+    padding-bottom: 1.5rem;
+  }
+
 }
 
 .calculator-display {
-  border: 2px solid white;
+  border: 2px solid var(--color-white);
   width: 90%;
   height: 3rem;
   margin: 1.5rem auto;
   border-radius: 5px;
-  /* background-color: wheat; */
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  background-color: var(--color-display);
+  color: var(--color-text);
   position: relative;
 }
 
@@ -45,8 +77,16 @@ body {
   width: 90%;
   min-height: 1rem;
   margin: 1px auto;
-  grid-template-columns: repeat(5, 90px);
-  grid-auto-rows: 90px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+  grid-template-areas:
+    "MC MR MemPlus MemMinus"
+    "Sub Mul Div Del"
+    "Seven Eight Nine Plus"
+    "Four Five Six Plus"
+    "One Two Three Plus"
+    "Power Clear Decimal Equals"
+    "Zero Zero Zero .";
   display: grid;
 
   justify-items: center;
@@ -54,21 +94,38 @@ body {
   cursor: pointer;
 }
 
+@media screen and (min-width: 500px) {
+  .calculator-buttons {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:
+      "MC MR MemPlus MemMinus Clear"
+      "Seven Eight Nine Del Div"
+      "Four Five Six Plus Mul"
+      "One Two Three Plus Sub"
+      "Zero Zero Decimal Power Equals";
+  }
+}
 
 .calculator-button {
-  width: clamp(75px, 15%, 100px);
-  height: clamp(75px, 15%, 100px);
+  width: 100%;
+  aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  background-color: lightgoldenrodyellow;
-  border: 1px solid white;
+  border: 1px solid var(--color-white);
   position: relative;
   overflow: hidden;
-
-  box-shadow: 3px 3px 0 3px #930;
+  background-color: var(--color-buttons1);
+  color: var(--color-text);
+  box-shadow: 3px 3px 0 3px var(--color-shadow);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+@media screen and (min-width: 500px) {
+  .calculator-button {
+    max-width: 75px;
+  }
 }
 
 .calculator-button::before {
@@ -78,7 +135,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, #fff, transparent);
+  background: linear-gradient(90deg, transparent, var(--color-white), transparent);
   transition: 0.5s;
 }
 
@@ -87,73 +144,50 @@ body {
 }
 
 .calculator-button:active {
-  box-shadow: 0 0 0 #930, inset 4px 4px 4px #930;
+  box-shadow: 0 0 0 var(--color-shadow), inset 4px 4px 4px var(--color-shadow);
   transform: translate(6px, 6px);
 }
 
-/* First Row */
+
+/* Buttons */
 .fn-memClear {
-  grid-column: 1/2;
-  grid-row: 1/2;
-  background-color: #020024;
-  color: #fff;
+  grid-area: MC;
 }
 
 .fn-memRecall {
-  grid-column: 2/3;
-  grid-row: 1/2;
-  background-color: #020024;
-  color: #fff;
+  grid-area: MR;
 }
 
 .fn-memSubtract {
-  grid-column: 3/4;
-  grid-row: 1/2;
-  background-color: #020024;
-  color: #fff;
+  grid-area: MemMinus;
 }
 
 .fn-memPlus {
-  grid-column: 4/5;
-  grid-row: 1/2;
-  background-color: #020024;
-  color: #fff;
+  grid-area: MemPlus;
 }
 
 .fn-clear {
-  grid-column: 5/6;
-  grid-row: 1/2;
-  background-color: #020024;
-  color: #fff;
+  grid-area: Clear;
 }
 
-/* Second Row */
 .num-seven {
-  grid-column: 1/2;
-  grid-row: 2/3;
-  background: linear-gradient(160deg, #020024 25%, #a60067);
-  color: #fff;
+  grid-area: Seven;
+  background: linear-gradient(160deg, var(--color-buttons1) 25%, var(--color-buttons2));
 }
 
 .num-eight {
-  grid-column: 2/3;
-  grid-row: 2/3;
-  background: linear-gradient(160deg, #020024 1%, #a60067 75%);
-  color: #fff;
+  grid-area: Eight;
+  background: linear-gradient(160deg, var(--color-buttons1) 1%, var(--color-buttons2) 75%);
 }
 
 .num-nine {
-  grid-column: 3/4;
-  grid-row: 2/3;
-  background: linear-gradient(160deg, #020024, #a60067 45%, #a60067);
-  color: #fff;
+  grid-area: Nine;
+  background: linear-gradient(160deg, var(--color-buttons1), var(--color-buttons2) 45%, var(--color-buttons2));
 }
 
 .fn-delete {
-  grid-column: 4/5;
-  grid-row: 2/3;
-  background-color: #a9f0d1;
-  background: linear-gradient(160deg, #020024, #a60067 45%, #a60067);
+  grid-area: Del;
+  background: linear-gradient(160deg, var(--color-buttons1), var(--color-buttons2) 45%, var(--color-buttons2));
 }
 
 .fn-delete img {
@@ -161,52 +195,40 @@ body {
 }
 
 .op-divide {
-  grid-column: 5/6;
-  grid-row: 2/3;
-  background: linear-gradient(160deg, #020024, #a60067 45%, #a60067);
-  color: #fff;
+  grid-area: Div;
+  background: linear-gradient(160deg, var(--color-buttons1), var(--color-buttons2) 45%, var(--color-buttons2));
   font-size: 2.25rem;
 }
 
 /* Third Row */
 .num-four {
-  grid-column: 1/2;
-  grid-row: 3/4;
-  background: #a60067;
-  color: #fff;
+  grid-area: Four;
+  background: var(--color-buttons2);
 }
 
 .num-five {
-  grid-column: 2/3;
-  grid-row: 3/4;
-  background: #a60067;
-  color: #fff;
+  grid-area: Five;
+  background: var(--color-buttons2);
 }
 
 .num-six {
-  grid-column: 3/4;
-  grid-row: 3/4;
-  background: #a60067;
-  color: #fff;
+  grid-area: Six;
+  background: var(--color-buttons2);
 }
 
 .op-plus {
-  grid-column: 4/5;
-  grid-row: 3/5;
+  grid-area: Plus;
 
-  height: 165px;
-  background-color: #020024;
-  color: #fff;
+  height: 100%;
+  background-color: var(--color-buttons1);
   font-size: 2.5rem;
   font-weight: bold;
 }
 
 .op-multiply {
-  grid-column: 5/6;
-  grid-row: 3/4;
-  background: #a60067;
+  grid-area: Mul;
+  background: var(--color-buttons2);
   font-size: 1.2rem;
-  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -217,72 +239,75 @@ body {
 
 /* Fourth Row */
 .num-one {
-  grid-column: 1/2;
-  grid-row: 4/5;
-  background: linear-gradient(160deg, #a60067 45%, #020024);
-  color: #fff;
+  grid-area: One;
+  background: linear-gradient(160deg, var(--color-buttons2) 45%, var(--color-buttons1));
 }
 
 .num-two {
-  grid-column: 2/3;
-  grid-row: 4/5;
-  background: linear-gradient(160deg, #a60067 45%, #020024);
-  color: #fff;
+  grid-area: Two;
+  background: linear-gradient(160deg, var(--color-buttons2) 45%, var(--color-buttons1));
 }
 
 .num-three {
-  grid-column: 3/4;
-  grid-row: 4/5;
-  background: linear-gradient(160deg, #a60067 45%, #020024);
-  color: #fff;
+  grid-area: Three;
+  background: linear-gradient(160deg, var(--color-buttons2) 45%, var(--color-buttons1));
 }
 
 .op-minus {
-  grid-column: 5/6;
-  grid-row: 4/5;
-  background: linear-gradient(160deg, #a60067 25%, #020024);
-  color: #fff;
+  grid-area: Sub;
+  background: linear-gradient(160deg, var(--color-buttons2) 25%, var(--color-buttons1));
   font-size: 2.5rem;
 }
 
 /* Fifth Row */
 .zero {
-  grid-column: 1/3;
-  grid-row: 5/6;
-  background-color: #020024;
-  width: clamp(165px, 15%, 200px);
-  color: #fff;
+  grid-area: Zero;
+  background-color: var(--color-buttons1);
+  width: 100%;
+  aspect-ratio: 3/1;
+}
+
+@media screen and (min-width: 500px) {
+  .zero {
+    aspect-ratio: 2.25/1;
+    max-width: 165px;
+  }
 }
 
 .decimal {
-  grid-column: 3/4;
-  grid-row: 5/6;
-  background-color: #020024;
-  color: #fff;
+  grid-area: Decimal;
+  background-color: var(--color-buttons1);
 }
 
 .equals {
-  grid-column: 5/6;
-  grid-row: 5/6;
-  background-color: #020024;
-  color: #fff;
+  grid-area: Equals;
+  background-color: var(--color-buttons1);
 }
 
 .fn-power {
-  grid-column: 4/5;
-  grid-row: 5/6;
-  background-color: #020024;
-  color: #fff;
+  grid-area: Power;
+  background-color: var(--color-buttons1);
 }
 
+.fn-power img {
+  width: 60%;
+}
+
+/* Display */
 .display-main {
   min-width: 75px;
   min-height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  font-size: 2rem;
+  font-size: 1.75rem;
   padding-right: 0.25rem;
+}
+
+@media screen and (min-width: 400px) {
+  .display-main {
+    font-size: 2rem;
+  }
 }
 
 .display-memory {
