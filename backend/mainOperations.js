@@ -55,8 +55,15 @@ function multiply(num1, num2 = num1) {
 }
 
 function divide(num1, num2 = num1) {
-  if (num2 === 0) {
-    return "Cannot divide by zero"
+  if (num2 === "0") {
+    console.log('test')
+    const mainDisplay = document.querySelector(".display-main");
+    mainDisplay.textContent = "Really? Divide by Nothing?"
+
+    setTimeout(1500, () => {
+      mainDisplay.textContent = STATE._valueTwo;
+    })
+    return;
   }
 
   // Perform the division:

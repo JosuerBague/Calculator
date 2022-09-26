@@ -6,6 +6,7 @@ import { handleOperation } from "./handleOperation.js";
 import handleEquals from "./handleEquals.js";
 import { clearAll, clearMemory, recallMemory, memPlus, memSubtract } from "./memoryFunctions.js";
 import handleDelete from "./handleDelete.js";
+import keyBoard from "./keyBoard.js";
 
 // Power button
 const powerButton = document.querySelector(".fn-power");
@@ -63,3 +64,6 @@ equalsButton.addEventListener('click', handleEquals);
 // Delete Button
 const deleteButton = document.querySelector('.fn-delete');
 deleteButton.addEventListener('click', handleDelete)
+
+// Keyboard Support
+keyBoard();

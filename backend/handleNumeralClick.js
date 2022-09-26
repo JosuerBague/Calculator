@@ -7,7 +7,7 @@ function handleNumeralClick(e) {
   if (STATE._overwrite) {
     let name = STATE._operation ? "_valueTwo" : "_valueOne";
 
-    changeValue(name, e.target.textContent);
+    changeValue(name, e.key || e.target.textContent);
     handleDisplay(name);
     STATE._lastKey = 'numeral';
     STATE._overwrite = false;
@@ -19,12 +19,12 @@ function handleNumeralClick(e) {
   if (!STATE._operation) {
 
     if (STATE._valueOne.replace('.', '').length === 16) return;
-    changeValue('_valueOne', e.target.textContent);
+    changeValue('_valueOne', e.key || e.target.textContent);
     handleDisplay('_valueOne');
   }
   else {
     if (STATE._valueTwo.replace('.', '').length === 16) return;
-    changeValue('_valueTwo', e.target.textContent);
+    changeValue('_valueTwo', e.key || e.target.textContent);
     handleDisplay('_valueTwo');
   }
 

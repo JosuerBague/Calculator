@@ -16,9 +16,9 @@ function handleOperation(e) {
   }
 
   // Change the STATE operator to the operator preseed:
-  setOperator(e.target.attributes.value.value);
+  setOperator(e.key || e.target.attributes.value.value);
   STATE._lastKey = 'operator';
-  
+
 }
 
 function setOperator(operator) {
