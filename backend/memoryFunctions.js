@@ -1,8 +1,8 @@
 import { STATE } from "./state.js";
 import handleDisplay from "./handleDisplay.js";
 
-function clearAll(e) {
-  const text = e.target.classList.contains("fn-clear") || e.key === "Escape" ? "CLEAR" : "WELCOME";
+function clearAll() {
+  const text = "Reset";
   STATE._total = "0";
   STATE._memoryTotal = "0";
   STATE._valueOne = "0";

@@ -32,8 +32,8 @@ export default function handleEquals() {
   if (['numeral', 'memory plus', 'memory minus'].includes(STATE._lastKey)) {
     STATE._lastStoredValue = STATE._valueTwo;
     STATE._lastKey = 'equals';
-    operate(STATE._operation, STATE._valueOne, STATE._valueTwo);
-    handleDisplay("_total");
+    const result = operate(STATE._operation, STATE._valueOne, STATE._valueTwo);
+    result ? handleDisplay("_total") : handleDisplay("zero-div");
 
     return;
   }
