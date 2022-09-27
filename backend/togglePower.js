@@ -12,7 +12,6 @@ export default function togglePower(e) {
     memoryIndicator.style.opacity = 0;
     mainDisplay.style.opacity = 0;
   } else {
-    memoryIndicator.style.opacity = 1;
     mainDisplay.style.opacity = 1;
   }
 }
