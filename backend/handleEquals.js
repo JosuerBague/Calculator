@@ -33,7 +33,7 @@ export default function handleEquals() {
     STATE._lastStoredValue = STATE._valueTwo;
     STATE._lastKey = 'equals';
     const result = operate(STATE._operation, STATE._valueOne, STATE._valueTwo);
-    result ? handleDisplay("_total") : handleDisplay("zero-div");
+    result !== "0" ? handleDisplay("_total") : handleDisplay("zero-div");
 
     return;
   }

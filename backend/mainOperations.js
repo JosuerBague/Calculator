@@ -17,7 +17,7 @@ function add(num1, num2 = num1) {
   STATE._total = `${temp}`;
   STATE._valueOne = STATE._total;
   STATE._valueTwo = "0";
-  return 1;
+  return "1";
 }
 
 function subtract(num1, num2 = num1) {
@@ -35,7 +35,7 @@ function subtract(num1, num2 = num1) {
   STATE._total = `${temp}`;
   STATE._valueOne = STATE._total;
   STATE._valueTwo = "0";
-  return 1;
+  return "1";
 }
 
 function multiply(num1, num2 = num1) {
@@ -54,11 +54,14 @@ function multiply(num1, num2 = num1) {
   STATE._total = `${temp}`;
   STATE._valueOne = STATE._total;
   STATE._valueTwo = "0";
-  return 1;
+  return "1";
 }
 
 function divide(num1, num2 = num1) {
-  if (num2 === "0") return 0;
+  if (num2 === "0") {
+    console.log("test");
+    return "0"
+  };
 
   // Perform the division:
   let temp, num1Mod, num2Mod, divisor;
@@ -77,7 +80,7 @@ function divide(num1, num2 = num1) {
   STATE._total = `${temp}`;
   STATE._valueOne = STATE._total;
   STATE._valueTwo = "0";
-  return 1;
+  return "1";
 }
 
 export { add, subtract, multiply, divide };

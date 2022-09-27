@@ -12,7 +12,8 @@ function handleOperation(e) {
   // Evaluate: 
   if (STATE._operation && STATE._lastKey === 'numeral') {
     const result = operate(STATE._operation, STATE._valueOne, STATE._valueTwo);
-    result ? handleDisplay("_total") : handleDisplay("zero-div");
+    console.log(result)
+    result !== "0" ? handleDisplay("_total") : handleDisplay("zero-div");
   }
 
   // Change the STATE operator to the operator preseed:
@@ -46,20 +47,16 @@ function setOperator(operator) {
 function operate(operator, num1, num2) {
   switch (operator) {
     case '+': {
-      add(num1, num2);
-      break;
+      return add(num1, num2);
     }
     case '-': {
-      subtract(num1, num2);
-      break;
+      return subtract(num1, num2);
     }
     case '*': {
-      multiply(num1, num2);
-      break;
+      return multiply(num1, num2);
     }
     case '/': {
-      divide(num1, num2);
-      break;
+      return divide(num1, num2);
     }
 
   }
