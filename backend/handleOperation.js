@@ -12,14 +12,12 @@ function handleOperation(e) {
   // Evaluate: 
   if (STATE._operation && STATE._lastKey === 'numeral') {
     const result = operate(STATE._operation, STATE._valueOne, STATE._valueTwo);
-    console.log(result)
     result !== "0" ? handleDisplay("_total") : handleDisplay("zero-div");
   }
 
   // Change the STATE operator to the operator preseed:
   setOperator(e.key || e.target.attributes.value.value);
   STATE._lastKey = 'operator';
-  console.log(STATE)
 }
 
 function setOperator(operator) {

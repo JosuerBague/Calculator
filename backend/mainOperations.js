@@ -59,7 +59,6 @@ function multiply(num1, num2 = num1) {
 
 function divide(num1, num2 = num1) {
   if (num2 === "0") {
-    console.log("test");
     return "0"
   };
 

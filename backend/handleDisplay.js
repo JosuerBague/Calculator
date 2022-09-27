@@ -16,10 +16,8 @@ export default function handleDisplay(name) {
       mainDisplay.textContent = STATE._valueTwo;
       clearAll();
     }, 1500)
-    console.log(STATE);
     return;
   }
 
   mainDisplay.textContent = format(STATE[name]);
-  console.log(STATE);
 }
