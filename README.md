@@ -4,6 +4,10 @@ This is my take on the calculator project by [THE ODIN PROJECT](https://www.theo
 
 Use cases have been provided below in checklist format.
 
+Live: [Odin Calculator](https://joshdagat.github.io/Calculator/)
+Repo: [Odin Repo](https://github.com/JoshDagat/Calculator)
+
+
 # Technologies used
 - CSS
 - HTML
